@@ -1,0 +1,43 @@
+/* global styles */
+body {
+   font-family: Avenir, Arial, Helvetica, sans-serif;
+   line-height: 1.25;
+   font-size: 16px;
+}
+
+/* heading sizes */
+h1 {
+   font-size: 2.4em;
+}
+
+h2 {
+   font-size: 1.8em;
+}
+
+h3 {
+   font-size: 1.5em;
+}
+
+h4 {
+   font-size: 0.9em;
+}
+
+@media screen and (max-width: 768px) {
+
+   * {
+      font-size: 90%;
+   }
+
+   h1 {
+      font-size: 1.8em;
+   }
+
+   h2 {
+      font-size: 1.5em;
+   }
+
+   h3 {
+      font-size: 1.2em;
+   }
+
+}

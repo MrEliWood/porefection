@@ -1,0 +1,32 @@
+.routine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.all-products {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border-radius: var(--small);
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin-top: var(--huge);
+}
+
+.product {
+    display: flex;
+    padding: var(--large);
+}
+
+.product-image {
+    object-fit: contain;
+    width: 250px;
+    margin-right: var(--medium);
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
