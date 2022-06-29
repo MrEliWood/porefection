@@ -25,9 +25,17 @@ code {
    font-family: inherit;
 }
 
-ol,
+ol {
+    list-style: upper-roman;
+    padding-left: 25px;
+}
+
 ul {
    list-style: none;
+}
+
+::marker {
+    font-weight: 700;
 }
 
 a,

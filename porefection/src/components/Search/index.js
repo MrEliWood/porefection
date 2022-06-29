@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 
-function Search({ routine, setRoutine, getRoutine }) {
+function Search({ routine, getRoutine }) {
 
     const [userSearch, setUserSearch] = useState('');
     const [searchResults, setSearchResults] = useState();
@@ -125,7 +125,7 @@ function Search({ routine, setRoutine, getRoutine }) {
 
     };
 
-    // // product details
+    // add product
     const addProduct = async (product) => {
 
         setIsOpen(false);
@@ -134,13 +134,9 @@ function Search({ routine, setRoutine, getRoutine }) {
             .then(response => response.json())
             .then(response => {
 
-                console.log('routine: ', routine);
-                console.log('response: ', response);
-
                 const updatedRoutine = routine;
                 updatedRoutine.push(response);
-
-                console.log('updated routine: ', updatedRoutine);
+                
                 localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
 
                 getRoutine();

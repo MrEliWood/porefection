@@ -19,6 +19,7 @@
 
 .result {
     display: flex;
+    align-items: flex-start;
     padding: var(--large);
 }
 

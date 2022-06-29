@@ -13,6 +13,7 @@
 
 .product {
     display: flex;
+    align-items: flex-start;
     padding: var(--large);
 }
 
@@ -25,4 +26,20 @@
 .product-details {
     display: flex;
     flex-direction: column;
+}
+
+.product-detail-header {
+    margin: var(--small) 0px;
+}
+
+.use-line {
+    margin-bottom: var(--small);
+}
+
+.ingredient {
+    margin-bottom: var(--small);
+}
+
+.ingredient-line:first-child {
+    font-weight: 700;
 }
