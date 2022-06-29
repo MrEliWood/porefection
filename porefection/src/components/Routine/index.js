@@ -16,11 +16,12 @@ function Routine({ routine, setRoutine }) {
 
                         <li key={index} className="product">
 
-                            <img className="product-image" src={product.currentSku.skuImages.image1500} alt={product.imageAltText}></img>
+                            <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>
 
                             <div className="product-details">
                                 <h3>{product.displayName}</h3>
                                 <p>{product.brandName}</p>
+                                <p>{product.suggestedUsage}</p>
                             </div>
 
                         </li>

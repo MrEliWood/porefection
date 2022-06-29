@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './style.css';
 
-function Search({ routine, setRoutine }) {
+function Search({ routine, setRoutine, getRoutine }) {
 
     const [userSearch, setUserSearch] = useState('');
     const [searchResults, setSearchResults] = useState();
+    const [searchSuggestions, setSearchSuggestions] = useState();
+    const [isOpen, setIsOpen] = useState(false);
 
     // const steps = [
     //     {
@@ -97,22 +99,53 @@ function Search({ routine, setRoutine }) {
         }
     };
 
-    // search products
-    const getProducts = () => {
+    // search suggestions
+    const getSuggestions = async (search) => {
 
-        fetch(`https://sephora.p.rapidapi.com/products/search?q=${userSearch}&pageSize=12&currentPage=1`, options)
+        setSearchResults();
+
+        await fetch(`https://sephora.p.rapidapi.com/auto-complete?q=${search}`, options)
             .then(response => response.json())
-            .then(response => setSearchResults(response))
+            .then(response => setSearchSuggestions(response))
+            .catch(err => console.error(err));
+
+    };
+
+    // search products
+    const getProducts = async (search) => {
+
+        setIsOpen(true);
+        setSearchSuggestions();
+        setSearchResults();
+
+        await fetch(`https://sephora.p.rapidapi.com/products/search?q=${search}&pageSize=12&currentPage=1`, options)
+            .then(response => response.json())
+            .then(response => response.products ? setSearchResults(response) : getSuggestions(search))
             .catch(err => console.error(err));
 
     };
 
     // // product details
-    const addProduct = (e, product) => {
+    const addProduct = async (product) => {
 
-        fetch(`https://sephora.p.rapidapi.com/products/detail?productId=${product.id}&preferedSku=${product.sku}`, options)
+        setIsOpen(false);
+
+        await fetch(`https://sephora.p.rapidapi.com/products/detail?productId=${product.id}&preferedSku=${product.sku}`, options)
             .then(response => response.json())
-            .then(response => setRoutine([...routine, response]))
+            .then(response => {
+
+                console.log('routine: ', routine);
+                console.log('response: ', response);
+
+                const updatedRoutine = routine;
+                updatedRoutine.push(response);
+
+                console.log('updated routine: ', updatedRoutine);
+                localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
+
+                getRoutine();
+
+            })
             .catch(err => console.error(err));
 
     };
@@ -121,16 +154,42 @@ function Search({ routine, setRoutine }) {
 
         <section className="search">
 
-            <input type="search" name="search" id="search" placeholder="Search for ingredients" value={userSearch} autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts()} />
-            <input type="submit" name="submit" id="submit" htmlFor="search" onClick={e => getProducts(e)} />
+            <input type="search" name="search" id="search" placeholder="Search for ingredients" value={userSearch} autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} />
+            <input type="submit" name="submit" id="submit" htmlFor="search" onClick={() => getProducts(userSearch)} />
 
-            <ul className="all-results">
+            {isOpen && <ul className="all-results">
+
+                {!searchSuggestions && !searchResults && <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
+
+                {searchSuggestions?.typeAheadTerms?.map((term, index) => {
+
+                    return (
+
+                        index > 2 ?
+
+                            <li className="suggestion" key={index} onClick={() => { setUserSearch(term.productName); getProducts(term.productName); }}>
+
+                                <p>{term.productName}</p>
+
+                            </li>
+
+                            : index > 0 &&
+
+                            <li className="suggestion" key={index} onClick={() => { setUserSearch(term.term); getProducts(term.term); }}>
+
+                                <p>{term.term}</p>
+
+                            </li>
+
+                    )
+
+                })}
 
                 {searchResults?.products?.map((product, index) => {
 
                     return (
 
-                        <li className="result" key={index} onClick={e => addProduct(e, { id: product.productId, sku: product.currentSku.skuId })}>
+                        <li className="result" key={index} onClick={() => addProduct({ id: product.productId, sku: product.currentSku.skuId })}>
 
                             <img className="result-image" src={product.currentSku.skuImages.image450} alt={product.currentSku.imageAltText}></img>
 
@@ -145,7 +204,7 @@ function Search({ routine, setRoutine }) {
 
                 })}
 
-            </ul>
+            </ul>}
 
             {/* <ul>
 
