@@ -21,7 +21,6 @@ function Main() {
 
         <main>
 
-            <h1>Main</h1>
             <Search routine={routine} setRoutine={setRoutine} getRoutine={getRoutine} />
             <Routine routine={routine} setRoutine={setRoutine} getRoutine={getRoutine} />
 
