@@ -34,20 +34,31 @@
     flex-direction: column;
 }
 
-
-
-
-
-
-
-.examples {
-    display: flex;
+#search {
+    width: 500px;
+    border: solid var(--dark);
+    border-width: 0 0 1px 0;
+    outline: none;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: var(--tiny);
+    margin-bottom: var(--large);
 }
 
-.examples p {
-    margin-right: var(--tiny);
+#search:focus ~ .search-placeholder {
+    transform: translateY(-20px);
+    font-size: 1rem;
 }
 
-.examples p::after {
-    content: ',';
+.search-placeholder {
+    position: absolute;
+    font-size: 1.4rem;
+    font-weight: 300;
+    transform: translateY(5px);
+    opacity: 0.5;
+}
+
+.search-active {
+    transform: translateY(-20px) !important;
+    font-size: 1rem !important;
 }

@@ -1,0 +1,136 @@
+.product-image {
+    object-fit: contain;
+    width: 200px;
+    margin-right: var(--medium);
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-banner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-headline {
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--tiny);
+}
+
+.remove-product-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 var(--tiny);
+}
+
+.remove-product-btn:hover {
+    cursor: pointer;
+}
+
+.remove-product-left {
+    border: solid var(--dark);
+    border-width: 0px 2px 0px 0px;
+    border-radius: 2px;
+    width: 0px;
+    height: 15px;
+    transform: translateX(1px) rotate(45deg);
+    -webkit-transform: translateX(1px) rotate(45deg);
+    opacity: 0.5;
+}
+
+.remove-product-right {
+    border: solid var(--dark);
+    border-width: 0px 2px 0px 0px;
+    border-radius: 2px;
+    width: 0px;
+    height: 15px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(-45deg);
+    opacity: 0.5;
+}
+
+.remove-product-btn:hover .remove-product-left,
+.remove-product-btn:hover .remove-product-right {
+    opacity: 1;
+}
+
+.product-detail-header:first-of-type {
+    margin-top: var(--medium);
+}
+
+.product-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--dark25);
+    border-width: 1px 0 0 0;
+    padding: 10px var(--tiny);
+}
+
+.product-detail-header:hover {
+    cursor: pointer;
+}
+
+.carrot {
+    border: solid var(--dark);
+    border-width: 0px 2px 2px 0px;
+    border-radius: 2px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    transform: scaleY(1) translateY(-3px) rotate(45deg);
+    -webkit-transform: scaleY(1) translateY(-3px) rotate(45deg);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.product-detail-header:hover .carrot {
+    opacity: 1;
+}
+
+.accordian {
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.accordian:last-child {
+    border: 1px solid var(--dark25);
+    border-width: 0 0 1px 0;
+}
+
+.accordian > * {
+    margin: var(--small);
+}
+
+.use-line:last-of-type,
+.description-line:last-of-type,
+.ingredient:last-child {
+    margin-bottom: var(--medium);
+}
+
+.ingredient:last-child::before {
+    content: 'Inactive Ingredients';
+    font-weight: 700;
+}
+
+.ingredient-line:first-child {
+    font-weight: 700;
+}
+
+.ingredient-line:last-child {
+    font-weight: 300;
+}
+
+.ingredient-line:only-child {
+    font-weight: 700;
+}
+
+.ingredient:last-of-type .ingredient-line {
+    font-weight: 300;
+}

@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+import Product from '../Product'
 import './style.css';
 
 function Routine({ routine, getRoutine }) {
@@ -9,29 +11,27 @@ function Routine({ routine, getRoutine }) {
 
         if (removeConfirmed) {
 
-            const updatedRoutine = routine.filter((_, index) => index !== product);
-            localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
+            const updatedRoutine = JSON.stringify(routine);
+            const productString = JSON.stringify(product);
+            localStorage.setItem('Porefection Skincare Routine', updatedRoutine.replace(productString, ''));
             getRoutine();
 
         };
 
     };
 
-    const handleAccordian = (e) => {
+    const handleStepCount = (steps) => {
 
-        let carrot = e.target.lastChild;
-
-        carrot.style.transform === 'scaleY(-1) translateY(-3px) rotate(45deg)'
-            ? carrot.style.transform = 'scaleY(1) translateY(-3px) rotate(45deg)'
-            : carrot.style.transform = 'scaleY(-1) translateY(-3px) rotate(45deg)';
-
-        let panel = e.target.nextElementSibling;
-
-        panel.style.maxHeight
-            ? panel.style.maxHeight = null
-            : panel.style.maxHeight = panel.scrollHeight + "px";
+        for (let i = 0; i < steps.length; i++) {
+            steps[i].innerText = `${i + 1}`;
+        };
 
     };
+
+    useEffect(() => {
+        let steps = document.getElementsByClassName('step');
+        handleStepCount(steps);
+    }, [routine]);
 
     return (
 
@@ -39,70 +39,162 @@ function Routine({ routine, getRoutine }) {
 
             <h1>YOUR ROUTINE</h1>
 
-            <ul className="all-products">
+            <ol id="all-products" className="all-products">
 
-                {routine?.map((product, index) => {
-
-                    return (
-
-                        <li key={index} className="product">
-
-                            <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>
-
-                            <div className="product-details">
-
-                                <div className="product-banner">
-
-                                    <div className="product-headline">
-
-                                        <h2>{product.displayName}</h2>
-                                        <h4>{product.brand.displayName}</h4>
-
-                                    </div>
-
-                                    <div className="remove-product-btn" onClick={() => removeProduct(index)}>
-                                        <div className="remove-product-left"></div>
-                                        <div className="remove-product-right"></div>
-                                    </div>
-
-                                </div>
-
-                                <h3 className="product-detail-header" onClick={handleAccordian}>Suggested Use<span className="carrot" /></h3>
-                                <ol className="accordian">
-                                    {product.suggestedUsage.replace(/<br>|<b>|<\/b>|/g, '').split('-').map((line, index) => {
-                                        return (
-                                            index > 0 && <li key={index} className="use-line">{line}</li>
-                                        );
-                                    })}
-                                </ol>
-
-                                <h3 className="product-detail-header" onClick={handleAccordian}>Ingredient Breakdown<span className="carrot" /></h3>
-                                <ul className="accordian">
-                                    {product.currentSku.ingredientDesc.replace(/, Inactive Ingredients/g, '<br>Inactive Ingredients').replace(/<br><\/b>/g, ':').replace(/<b>|<\/b>| &ndash/g, '').split('<br>').map((line, index) => {
-                                        while (line.charAt(0) === '-') {
-                                            line = line.substring(1);
-                                        }
-                                        return (
-                                            <div className="ingredient">
-                                                {line.split(':').map((item, i) => {
-                                                    return (
-                                                        <p key={index + '.' + i} className="ingredient-line">{item}</p>
-                                                    );
-                                                })}
-                                            </div>
-                                        );
-                                    })}
-                                </ul>
-
-                            </div>
-
-                        </li>
-
-                    )
-
+                {routine?.highTechTools?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.highTechTools.misc}/></li>)
                 })}
 
-            </ul>
+                {routine?.highTechTools?.hairRemoval?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.highTechTools.hairRemoval} /></li>)
+                })}
+
+                {routine?.highTechTools?.facialCleansingBrushes?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.highTechTools.facialCleansingBrushes} /></li>)
+                })}
+
+                {routine?.highTechTools?.antiAging?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.highTechTools.antiAging} /></li>)
+                })}
+
+                {routine?.highTechTools?.teethWhitening?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.highTechTools.teethWhitening} /></li>)
+                })}
+
+
+                {routine?.cleansers?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.misc} /></li>)
+                })}
+
+                {routine?.cleansers?.faceWipes?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.faceWipes} /></li>)
+                })}
+
+                {routine?.cleansers?.makeupRemovers?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.makeupRemovers} /></li>)
+                })}
+
+                {routine?.cleansers?.faceWashAndCleansers?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.faceWashAndCleansers} /></li>)
+                })}
+
+                {routine?.cleansers?.exfoliators?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.exfoliators} /></li>)
+                })}
+
+                {routine?.cleansers?.toners?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.toners} /></li>)
+                })}
+
+                {routine?.cleansers?.blottingPapers?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.cleansers.blottingPapers} /></li>)
+                })}
+
+
+                {routine?.treatments?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.treatments.misc} /></li>)
+                })}
+
+                {routine?.treatments?.faceSerums?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.treatments.faceSerums} /></li>)
+                })}
+
+                {routine?.treatments?.blemishAndAcneTreatments?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.treatments.blemishAndAcneTreatments} /></li>)
+                })}
+
+                {routine?.treatments?.facialPeels?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.treatments.facialPeels} /></li>)
+                })}
+
+
+                {routine?.masks?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.masks.misc} /></li>)
+                })}
+
+                {routine?.masks?.faceMasks?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.masks.faceMasks} /></li>)
+                })}
+
+                {routine?.masks?.sheetMasks?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.masks.sheetMasks} /></li>)
+                })}
+
+
+                {routine?.eyeCare?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.eyeCare.misc} /></li>)
+                })}
+
+                {routine?.eyeCare?.eyeCreamsAndTreatments?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.eyeCare.eyeCreamsAndTreatments} /></li>)
+                })}
+
+                {routine?.eyeCare?.eyeCare?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.eyeCare.eyeCare} /></li>)
+                })}
+
+
+                {routine?.moisturizers?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.misc} /></li>)
+                })}
+
+                {routine?.moisturizers?.decolleteAndNeckCreams?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.decolleteAndNeckCreams} /></li>)
+                })}
+
+                {routine?.moisturizers?.nightCreams?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.nightCreams} /></li>)
+                })}
+
+                {routine?.moisturizers?.faceOils?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.faceOils} /></li>)
+                })}
+
+                {routine?.moisturizers?.mistsAndEssences?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.mistsAndEssences} /></li>)
+                })}
+
+                {routine?.moisturizers?.BBandCCcreams?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.moisturizers.BBandCCcreams} /></li>)
+                })}
+
+
+                {routine?.sunscreen?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.sunscreen.misc} /></li>)
+                })}
+
+                {routine?.sunscreen?.faceSunscreen?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.sunscreen.faceSunscreen} /></li>)
+                })}
+
+                {routine?.sunscreen?.bodySunscreen?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.sunscreen.bodySunscreen} /></li>)
+                })}
+
+
+                {routine?.selfTanners?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.selfTanners.misc} /></li>)
+                })}
+
+                {routine?.selfTanners?.forFace?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.selfTanners.forFace} /></li>)
+                })}
+
+                {routine?.selfTanners?.forBody?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.selfTanners.forBody} /></li>)
+                })}
+
+
+                {routine?.lipBalmsAndTreatments?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.lipBalmsAndTreatments.misc} /></li>)
+                })}
+
+
+                {routine?.makeup?.misc?.map((product, index) => {
+                    return (<li key={index} className="product"><h1 className="step">STEP</h1><Product key={index} product={product} index={index} removeProduct={removeProduct} parent={routine.makeup.misc} /></li>)
+                })}
+
+            </ol>
 
         </section>
 

@@ -4,3 +4,7 @@
     align-items: center;
     min-height: 100vh;
 }
+
+::placeholder {
+    font-weight: 300;
+}

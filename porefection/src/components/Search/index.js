@@ -8,82 +8,6 @@ function Search({ routine, getRoutine }) {
     const [searchSuggestions, setSearchSuggestions] = useState();
     const [isOpen, setIsOpen] = useState(false);
 
-    // const steps = [
-    //     {
-    //         name: 'cleanser',
-    //         time: 'day & night',
-    //         examples: [
-    //             'mycellar water'
-    //         ]
-    //     },
-
-    //     {
-    //         name: 'toner',
-    //         time: 'day & night',
-    //         examples: [
-    //             'alpha hydroxy acid',
-    //             'beta hydroxy acid',
-    //             'yaluronic acid',
-    //             'rose water',
-    //             'green tea',
-    //             'vitamin c',
-    //             'vitamin e'
-    //         ]
-    //     },
-
-    //     {
-    //         name: 'serum',
-    //         time: 'day & night',
-    //         examples: [
-    //             'hyaluronic acid',
-    //             'vitamin c',
-    //             'retinol',
-    //             'vitamin b3',
-    //             'peptides',
-    //             'Colloidal sulfur',
-    //             'niacinamide'
-    //         ]
-    //     },
-
-    //     {
-    //         name: 'spot treatment',
-    //         time: 'day & night'
-    //     },
-
-    //     {
-    //         name: 'moisturizer',
-    //         time: 'day & night'
-    //     },
-
-    //     {
-    //         name: 'retinol',
-    //         time: 'night'
-    //     },
-
-    //     {
-    //         name: 'face oil',
-    //         time: 'day & night',
-    //         examples: [
-    //             'maracuja oil',
-    //             'olive oil',
-    //             'marula oil',
-    //             'rosehip oil'
-    //         ]
-    //     },
-
-    //     {
-    //         name: 'sunscreen',
-    //         time: 'day',
-    //         examples: [
-    //             'oxybenzone',
-    //             'octinoxate',
-    //             'titanium dioxide',
-    //             'zinc oxide'
-    //         ]
-    //     },
-
-    // ];
-
     const handleInputChange = (e) => {
 
         setUserSearch(e.target.value);
@@ -118,7 +42,7 @@ function Search({ routine, getRoutine }) {
         setSearchSuggestions();
         setSearchResults();
 
-        await fetch(`https://sephora.p.rapidapi.com/products/search?q=${search}&pageSize=12&currentPage=1`, options)
+        await fetch(`https://sephora.p.rapidapi.com/products/search?q=${search}&pageSize=12&currentPage=1&node=1050055`, options)
             .then(response => response.json())
             .then(response => response.products ? setSearchResults(response) : getSuggestions(search))
             .catch(err => console.error(err));
@@ -128,6 +52,8 @@ function Search({ routine, getRoutine }) {
     // add product
     const addProduct = async (product) => {
 
+        console.log(product);
+
         setIsOpen(false);
 
         await fetch(`https://sephora.p.rapidapi.com/products/detail?productId=${product.id}&preferedSku=${product.sku}`, options)
@@ -135,8 +61,130 @@ function Search({ routine, getRoutine }) {
             .then(response => {
 
                 const updatedRoutine = routine;
-                updatedRoutine.push(response);
-                
+
+                // high tech tools
+                if (response.parentCategory.displayName === 'High Tech Tools') {
+                    updatedRoutine.highTechTools.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Hair Removal') {
+                    updatedRoutine.highTechTools.hairRemoval.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Facial Cleansing Brushes') {
+                    updatedRoutine.highTechTools.facialCleansingBrushes.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Anti-Aging') {
+                    updatedRoutine.highTechTools.antiAging.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Teeth Whitening') {
+                    updatedRoutine.highTechTools.teethWhitening.push(response);
+                } else
+
+                // cleansers
+                if (response.parentCategory.displayName === 'Cleansers') {
+                    updatedRoutine.cleansers.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Wipes') {
+                    updatedRoutine.cleansers.faceWipes.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Makeup Removers') {
+                    updatedRoutine.cleansers.makeupRemovers.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Wash & Cleansers') {
+                    updatedRoutine.cleansers.faceWashAndCleansers.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Exfoliators') {
+                    updatedRoutine.cleansers.exfoliators.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Toners') {
+                    updatedRoutine.cleansers.toners.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Blotting Papers') {
+                    updatedRoutine.cleansers.blottingPapers.push(response);
+                } else
+                // treatments
+                if (response.parentCategory.displayName === 'Treatments') {
+                    updatedRoutine.treatments.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Serums') {
+                    updatedRoutine.treatments.faceSerums.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Blemish & Acne Treatments') {
+                    updatedRoutine.treatments.blemishAndAcneTreatments.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Facial Peels') {
+                    updatedRoutine.treatments.facialPeels.push(response);
+                } else
+
+                // masks
+                if (response.parentCategory.displayName === 'Masks') {
+                    updatedRoutine.masks.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Masks') {
+                    updatedRoutine.masks.faceMasks.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Sheet Masks') {
+                    updatedRoutine.masks.sheetMasks.push(response);
+                } else
+
+                // eye care
+                if (response.parentCategory.displayName === 'Eye Care') {
+                    updatedRoutine.eyeCare.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Eye Creams & Treatments') {
+                    updatedRoutine.eyeCare.eyeCreamsAndTreatments.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Eye Masks') {
+                    updatedRoutine.eyeCare.eyeMasks.push(response);
+                } else
+
+                // moisturizers
+                if (response.parentCategory.displayName === 'Moisturizers') {
+                    updatedRoutine.moisturizers.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Decollete & Neck Creams') {
+                    updatedRoutine.moisturizers.decolleteAndNeckCreams.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Night Creams') {
+                    updatedRoutine.moisturizers.nightCreams.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Oils') {
+                    updatedRoutine.moisturizers.faceOils.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Mists & Essences') {
+                    updatedRoutine.moisturizers.mistsAndEssences.push(response);
+                } else
+                if (response.parentCategory.displayName === 'BB & CC Creams') {
+                    updatedRoutine.moisturizers.BBandCCcreams.push(response);
+                } else
+
+                // sunscreen
+                if (response.parentCategory.displayName === 'Sunscreen') {
+                    updatedRoutine.sunscreen.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Face Sunscreen') {
+                    updatedRoutine.sunscreen.faceSunscreen.push(response);
+                } else
+                if (response.parentCategory.displayName === 'Body Sunscreen') {
+                    updatedRoutine.sunscreen.bodySunscreen.push(response);
+                } else
+
+                // self tanners
+                if (response.parentCategory.displayName === 'Self Tanners') {
+                    updatedRoutine.selfTanners.misc.push(response);
+                } else
+                if (response.parentCategory.displayName === 'For Face') {
+                    updatedRoutine.selfTanners.forFace.push(response);
+                } else
+                if (response.parentCategory.displayName === 'For Body') {
+                    updatedRoutine.selfTanners.forBody.push(response);
+                } else
+                // lip balms & treamtments
+                if (response.parentCategory.displayName === 'Lip Balms & Treatments') {
+                    updatedRoutine.lipBalmsAndTreatments.misc.push(response);
+                } else {
+                    updatedRoutine.makeup.misc.push(response);
+                }
+
                 localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
 
                 getRoutine();
@@ -150,8 +198,8 @@ function Search({ routine, getRoutine }) {
 
         <section className="search">
 
-            <input type="search" name="search" id="search" placeholder="Search for ingredients" value={userSearch} autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} />
-            <input type="submit" name="submit" id="submit" htmlFor="search" onClick={() => getProducts(userSearch)} />
+            <input type="search" name="search" id="search" value={userSearch} placeholder="Search for a product or ingredient" autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} />
+            {/* <input type="submit" name="submit" id="submit" htmlFor="search" onClick={() => getProducts(userSearch)} /> */}
 
             {isOpen && <ul className="all-results">
 
