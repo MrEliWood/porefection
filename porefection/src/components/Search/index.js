@@ -19,7 +19,7 @@ function Search({ routine, getRoutine }) {
         method: 'GET',
         headers: {
             'X-RapidAPI-Host': 'sephora.p.rapidapi.com',
-            'X-RapidAPI-Key': '2bf03530c4msh1d7941385d4e837p14e84fjsnfd38d72b506e'
+            'X-RapidAPI-Key': process.env.REACT_APP_API_KEY
         }
     };
 
@@ -37,6 +37,8 @@ function Search({ routine, getRoutine }) {
 
     // search products
     const getProducts = async (search) => {
+
+        console.log(process.env.REACT_APP_API_KEY)
 
         setIsOpen(true);
         setSearchSuggestions();
