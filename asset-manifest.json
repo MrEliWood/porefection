@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/porefection/static/css/main.8b3424da.css",
+    "main.js": "/porefection/static/js/main.a4c30d11.js",
+    "index.html": "/porefection/index.html",
+    "main.8b3424da.css.map": "/porefection/static/css/main.8b3424da.css.map",
+    "main.a4c30d11.js.map": "/porefection/static/js/main.a4c30d11.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b3424da.css",
+    "static/js/main.a4c30d11.js"
+  ]
+}
