@@ -1,7 +1,6 @@
 // import components
 import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
 
 // import styles
 import './styles/reset.css';
@@ -18,7 +17,6 @@ function App() {
 
             <Header />
             <Main />
-            <Footer />
 
         </div>
 

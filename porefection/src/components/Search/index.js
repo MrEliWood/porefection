@@ -8,6 +8,14 @@ function Search({ routine, getRoutine }) {
     const [searchSuggestions, setSearchSuggestions] = useState();
     const [isOpen, setIsOpen] = useState(false);
 
+    if (isOpen) {
+        // Disable scroll
+        document.body.style.overflow = "hidden";
+    } else {
+        // Enable scroll
+        document.body.style.overflow = "auto";
+    }
+
     const handleInputChange = (e) => {
 
         setUserSearch(e.target.value);

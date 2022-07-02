@@ -1,11 +1,9 @@
 /* import from google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 
 /* global styles */
 body {
-    /* font-family: 'Poppins', sans-serif; */
     font-family: 'Gantari', sans-serif;
     line-height: 1.25;
     font-size: 16px;
@@ -33,22 +31,28 @@ h4 {
     font-weight: 100;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
 
-    * {
-        font-size: 90%;
+    /* global styles */
+    body {
+        font-size: 12px;
     }
 
+    /* heading sizes */
     h1 {
         font-size: 1.8em;
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     h3 {
-        font-size: 1.2em;
+        font-size: 1.1em;
+    }
+
+    h4 {
+        font-size: 1em;
     }
 
 }

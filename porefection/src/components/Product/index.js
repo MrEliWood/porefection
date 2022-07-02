@@ -20,13 +20,15 @@ function Product({ product, removeProduct }) {
 
     return (
 
-        <>
+        <div className="product-card">
 
-            <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>
+            {window.innerWidth > 768 && <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>}
 
             <div className="product-details">
 
                 <div className="product-banner">
+
+                    {window.innerWidth <= 768 && <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>}
 
                     <div className="product-headline">
 
@@ -88,7 +90,7 @@ function Product({ product, removeProduct }) {
 
             </div>
 
-        </>
+        </div>
 
     );
 

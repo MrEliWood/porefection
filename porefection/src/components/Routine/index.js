@@ -201,6 +201,8 @@ function Routine({ routine, getRoutine }) {
 
             </ol>
 
+            <h4 className="api-credit">Product information provided by Sephora API.</h4>
+
         </section>
 
     );

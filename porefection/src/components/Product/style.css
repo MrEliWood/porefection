@@ -1,3 +1,7 @@
+.product-card {
+    display: flex;
+}
+
 .product-image {
     object-fit: contain;
     height: 200px;
@@ -17,6 +21,7 @@
 .product-headline {
     display: flex;
     flex-direction: column;
+    width: 100%;
     margin: 0 var(--tiny);
 }
 
@@ -117,7 +122,7 @@
     border-width: 0 0 1px 0;
 }
 
-.accordian > * {
+.accordian>* {
     margin: var(--small);
 }
 
@@ -155,4 +160,34 @@
 
 .ingredient:last-of-type .ingredient-line {
     font-weight: 200;
+}
+
+/* large screens */
+@media screen and (max-width: 1200px) {}
+
+/* small screens */
+@media screen and (max-width: 1024px) {}
+
+/* tablets */
+@media screen and (max-width: 768px) {
+
+    .product-image {
+        height: 150px;
+    }
+
+    .product-headline {
+        justify-content: flex-end;
+        width: 100%;
+        margin: 0 var(--tiny);
+    }
+
+}
+
+/* phones */
+@media screen and (max-width: 480px) {
+
+    .product-image {
+        height: 90px;
+    }
+
 }
