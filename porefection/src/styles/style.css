@@ -6,5 +6,9 @@
 }
 
 ::placeholder {
-    font-weight: 300;
+    font-weight: 200;
+}
+
+::marker {
+    font-weight: 500;
 }

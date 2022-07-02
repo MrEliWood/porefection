@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.no-products-message {
+    font-weight: 200;
+}
+
 .all-products {
     display: flex;
     flex-direction: column;
@@ -21,12 +25,16 @@
 .step::before {
     content: 'Step ';
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     font-size: 3rem;
     line-height: 0.9;
+    height: 200px;
     margin-right: var(--large);
 }

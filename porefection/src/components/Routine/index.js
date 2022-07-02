@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Product from '../Product'
 import './style.css';
 
 function Routine({ routine, getRoutine }) {
+
+    const [haveProducts, setHaveProducts] = useState(false);
 
     // remove product
     const removeProduct = (product) => {
@@ -30,6 +32,7 @@ function Routine({ routine, getRoutine }) {
 
     useEffect(() => {
         let steps = document.getElementsByClassName('step');
+        steps.length && setHaveProducts(true);
         handleStepCount(steps);
     }, [routine]);
 
@@ -37,7 +40,9 @@ function Routine({ routine, getRoutine }) {
 
         <section className="routine">
 
-            <h1>YOUR ROUTINE</h1>
+            {haveProducts
+                ? <h1>Your Routine</h1>
+                : <h2 className="no-products-message">Add products from your skincare routine and we'll put them in order for you.</h2>}
 
             <ol id="all-products" className="all-products">
 

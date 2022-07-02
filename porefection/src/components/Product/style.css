@@ -1,6 +1,6 @@
 .product-image {
     object-fit: contain;
-    width: 200px;
+    height: 200px;
     margin-right: var(--medium);
 }
 
@@ -18,6 +18,18 @@
     display: flex;
     flex-direction: column;
     margin: 0 var(--tiny);
+}
+
+.product-brand-category {
+    display: flex;
+}
+
+.product-brand {
+    margin-right: var(--tiny);
+}
+
+.product-category {
+    margin-left: var(--tiny);
 }
 
 .remove-product-btn {
@@ -97,6 +109,7 @@
 .accordian {
     max-height: 0px;
     overflow: hidden;
+    padding: 0 var(--medium);
 }
 
 .accordian:last-child {
@@ -108,6 +121,15 @@
     margin: var(--small);
 }
 
+.suggested-use {
+    list-style: upper-roman;
+}
+
+.use-line {
+    padding-left: var(--tiny);
+    transform: translateX(-5px);
+}
+
 .use-line:last-of-type,
 .description-line:last-of-type,
 .ingredient:last-child {
@@ -116,21 +138,21 @@
 
 .ingredient:last-child::before {
     content: 'Inactive Ingredients';
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .ingredient-line:first-child {
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .ingredient-line:last-child {
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .ingredient-line:only-child {
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .ingredient:last-of-type .ingredient-line {
-    font-weight: 300;
+    font-weight: 200;
 }

@@ -6,3 +6,8 @@ header {
     width: 100vw;
     padding: var(--large);
 }
+
+.site-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.8rem;
+}

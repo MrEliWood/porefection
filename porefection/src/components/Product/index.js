@@ -17,7 +17,7 @@ function Product({ product, removeProduct }) {
             : panel.style.maxHeight = panel.scrollHeight + "px";
 
     };
-    
+
     return (
 
         <>
@@ -30,9 +30,12 @@ function Product({ product, removeProduct }) {
 
                     <div className="product-headline">
 
-                        <p>{product.parentCategory.parentCategory.displayName} | {product.parentCategory.displayName}</p>
-                        <h2>{product.displayName}</h2>
-                        <h4>{product.brand.displayName}</h4>
+                        <div className="product-brand-category">
+                            <p className="product-brand">{product.brand.displayName}</p>
+                            <h4>|</h4>
+                            <p className="product-category">{product.parentCategory.displayName}</p>
+                        </div>
+                        <h2 className="product-name">{product.displayName}</h2>
 
                     </div>
 
@@ -44,12 +47,12 @@ function Product({ product, removeProduct }) {
                 </div>
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>Description<span className="carrot" /></h3>
-                <ul className="accordian">
+                <ul className="accordian description">
                     {product.shortDescription.replace(/<b>|<\/b>/g, '').split('<br>').map((line, index) => {
                         return (
                             <li key={index} className="description-line">
                                 {line.replace(/What it is/g, '').split(':').map((item, i) => {
-                                    return (<p key={i} className="description-item" style={i === 0 ? { fontWeight: '700' } : {}}>{item}</p>)
+                                    return (<p key={i} className="description-item" style={i === 0 ? { fontWeight: '500' } : {}}>{item}</p>)
                                 })}
                             </li>
                         );
@@ -57,16 +60,16 @@ function Product({ product, removeProduct }) {
                 </ul>
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>Suggested Use<span className="carrot" /></h3>
-                <ol className="accordian">
-                    {product.suggestedUsage.replace(/<br>|<b>|<\/b>|/g, '').split('-').map((line, index) => {
+                <ol className="accordian suggested-use">
+                    {product.suggestedUsage.replace(/<br>|<b>|<\/b>/g, '').replace(/&rsquo;/g, `'`).split('-').map((line, index) => {
                         return (
-                            index > 0 && <li key={index} className="use-line">{line}</li>
+                            index > 0 && <li key={index} className="use-line"><p>{line}</p></li>
                         );
                     })}
                 </ol>
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>Ingredient Breakdown<span className="carrot" /></h3>
-                <ul className="accordian">
+                <ul className="accordian ingredient-breakdown">
                     {product.currentSku.ingredientDesc.split('Clean at Sephora')[0].replace(/, Inactive Ingredients|, Inactive Ingredients<br>/g, '<br>').replace(/<br><\/b>/g, ':').replace(/<b>|<\/b>| &ndash/g, '').split('<br>').map((line, index) => {
                         while (line.charAt(0) === '-') {
                             line = line.substring(1);
