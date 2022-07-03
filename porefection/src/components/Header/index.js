@@ -6,7 +6,7 @@ function Header() {
 
         <header>
 
-            <h1 className="site-title">Porefection</h1>
+            <h1 className="site-title">porefection</h1>
             
         </header>
 

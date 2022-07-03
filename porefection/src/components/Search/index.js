@@ -22,7 +22,7 @@ function Search({ routine, getRoutine }) {
 
     }
 
-    isOpen && window.scrollTo(0, 150);
+    isOpen && window.scrollTo(0, 120);
 
     const handleInputChange = (e) => {
 
@@ -218,8 +218,18 @@ function Search({ routine, getRoutine }) {
 
             {isOpen && <div className="modal-background" onClick={() => setIsOpen(false)}></div>}
 
+            {isOpen && <h2 className="close-modal-btn" onClick={() => setIsOpen(false)}>X</h2>}
 
-            <input formaction type="text" name="search" id="search" value={userSearch} placeholder="Search for a product or ingredient" autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} onFocus={handleFocus} />
+            <div className="search-input">
+
+                <div className="search-caption">Search for a product</div>
+
+                <form className="search-container">
+                    <input type="search" name="search" id="search" value={userSearch} placeholder="Niacinamide 10% + Zinc 1% Oil Control Serum" autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} onFocus={handleFocus} />
+                    <button className="search-btn" onClick={(e) => { e.preventDefault(); getProducts(userSearch); }}>Search</button>
+                </form>
+
+            </div>
 
 
             {isOpen && <ul className="all-results">

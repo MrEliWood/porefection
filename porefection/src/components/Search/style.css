@@ -6,6 +6,41 @@
     padding: var(--large) var(--large) var(--medium) var(--large);
 }
 
+.search-input {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+}
+
+.search-caption {
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.search-container {
+    display: flex;
+    z-index: 2;
+    max-width: 100%;
+}
+
+.search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: var(--tiny);
+    background: var(--accent);
+    color: var(--light);
+    padding: var(--tiny) var(--small);
+    margin-left: var(--small);
+    z-index: 2;
+}
+
+.search-btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 .modal-background {
     display: block;
     position: fixed;
@@ -18,17 +53,30 @@
     z-index: 1;
 }
 
+.close-modal-btn {
+    position: fixed;
+    top: var(--medium);
+    right: var(--medium);
+    color: var(--dark50);
+    line-height: 1;
+    animation: fade-in 0.5s both 0.5s;
+    z-index: 2;
+}
+
+.close-modal-btn:hover {
+    cursor: pointer;
+    color: var(--dark);
+}
+
 #search {
     width: 500px;
-    max-width: 90%;
     border: solid var(--dark);
     border-width: 0 0 1px 0;
     border-radius: 0px;
     background: none;
     outline: none;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: var(--tiny);
+    font-size: 1.2rem;
+    padding: 10px;
     z-index: 2;
 }
 
@@ -45,7 +93,7 @@
     background: var(--light);
     width: 900px;
     max-width: 80%;
-    margin: var(--large);
+    margin: 90px;
     z-index: 2;
     animation: accordian 0.5s both 0.5s;
 }
@@ -180,20 +228,11 @@
 @media screen and (max-width: 768px) {
 
     .search {
-        padding: var(--tiny);
+        padding: 0;
     }
 
     #search {
-        width: 500px;
         max-width: 95%;
-        border: solid var(--dark);
-        border-width: 0 0 1px 0;
-        background: none;
-        outline: none;
-        font-size: 1rem;
-        text-align: center;
-        padding: var(--tiny);
-        z-index: 2;
     }
 
     .result {
@@ -205,8 +244,18 @@
 /* phones */
 @media screen and (max-width: 480px) {
 
-    .all-results {
+    .close-modal-btn {
+        top: var(--small);
+        right: var(--small);
+        font-size: 1.8rem;
+    }
+
+    .search-input {
         max-width: 90%;
+    }
+
+    .all-results {
+        max-width: 95%;
     }
 
     .result {
