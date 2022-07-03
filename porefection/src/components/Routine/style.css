@@ -28,14 +28,14 @@
     display: flex;
     align-items: flex-start;
     padding: var(--large);
-    animation: slide-up 0.5s both;
+    /* animation: slide-up 0.5s both; */
 }
 
 .step::before {
     content: 'Step ';
     font-size: 1rem;
     font-weight: 200;
-    animation: slide-up 0.5s both;
+    /* animation: slide-up 0.5s both; */
 }
 
 .step {
@@ -47,7 +47,7 @@
     line-height: 0.9;
     height: 200px;
     margin-right: var(--large);
-    animation: slide-up 0.5s both;
+    /* animation: slide-up 0.5s both; */
 }
 
 .api-credit {

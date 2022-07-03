@@ -14,8 +14,8 @@
     backdrop-filter: blur(15px);
     width: 100vw;
     height: 100vh;
-    z-index: 1;
     animation: fade-in 0.5s both;
+    z-index: 1;
 }
 
 #search {
@@ -211,10 +211,6 @@
 
     .result {
         padding: var(--small);
-    }
-
-    .suggestion {
-
     }
 
     .suggestion::before {
