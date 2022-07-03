@@ -40,9 +40,7 @@ function Routine({ routine, getRoutine }) {
 
         <section className="routine">
 
-            {haveProducts
-                ? <h1>Your Routine</h1>
-                : <h2 className="no-products-message">Add products from your skincare routine and we'll put them in order for you.</h2>}
+            {!haveProducts && <h3 className="no-products-message">Add products from your skincare routine and we'll put them in order for you.</h3>}
 
             <ol id="all-products" className="all-products">
 
@@ -201,7 +199,7 @@ function Routine({ routine, getRoutine }) {
 
             </ol>
 
-            <h4 className="api-credit">Product information provided by Sephora API.</h4>
+            {haveProducts && <h4 className="api-credit">Product information provided by Sephora API.</h4>}
 
         </section>
 

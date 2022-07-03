@@ -3,26 +3,27 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: var(--large);
-    margin-bottom: var(--large);
+    padding: var(--large) var(--large) var(--medium) var(--large);
 }
 
 .modal-background {
     display: block;
     position: fixed;
     top: 0;
-    background: var(--dark25);
+    background: var(--dark10);
     backdrop-filter: blur(15px);
     width: 100vw;
     height: 100vh;
     z-index: 1;
+    animation: fade-in 0.5s both;
 }
 
 #search {
     width: 500px;
-    max-width: 100%;
+    max-width: 90%;
     border: solid var(--dark);
     border-width: 0 0 1px 0;
+    border-radius: 0px;
     background: none;
     outline: none;
     font-size: 1.5rem;
@@ -38,7 +39,7 @@
     align-items: center;
     position: absolute;
     overflow: scroll;
-    max-height: 60vh;
+    max-height: 70vh;
     border-radius: var(--small);
     box-shadow: var(--shadow);
     background: var(--light);
@@ -46,6 +47,7 @@
     max-width: 80%;
     margin: var(--large);
     z-index: 2;
+    animation: accordian 0.5s both 0.5s;
 }
 
 .all-results::-webkit-scrollbar {
@@ -67,14 +69,16 @@
     align-items: center;
     text-align: center;
     padding: var(--medium);
+    animation: slide-up 0.5s both;
 }
 
 .suggestion {
     user-select: none;
     -webkit-user-select: none;
     width: 100%;
-    padding: var(--tiny);
+    padding: var(--small) var(--medium);
     transition: none;
+    animation: slide-up 0.5s both;
 }
 
 .suggestion:hover {
@@ -87,18 +91,18 @@
     border-radius: 0 0 var(--small) var(--small);
 }
 
-.suggestion::after {
+.suggestion::before {
     content: '';
     position: absolute;
     margin: auto;
     right: var(--medium);
     left: var(--medium);
-    transform: translateY(-25px);
+    transform: translateY(-15px);
     height: 1px;
     background-color: var(--dark10);
 }
 
-.suggestion:first-of-type::after {
+.suggestion:first-of-type::before {
     display: none;
 }
 
@@ -112,6 +116,7 @@
     width: 100%;
     padding: var(--small) var(--medium);
     transition: none;
+    animation: slide-up 0.5s both;
 }
 
 .result:hover {
@@ -120,7 +125,7 @@
     color: var(--light);
 }
 
-.result::after {
+.result::before {
     content: '';
     position: absolute;
     margin: auto;
@@ -131,7 +136,7 @@
     background-color: var(--dark10);
 }
 
-.result:first-of-type::after {
+.result:first-of-type::before {
     display: none;
 }
 
@@ -169,24 +174,18 @@
 @media screen and (max-width: 1200px) {}
 
 /* small screens */
-@media screen and (max-width: 1024px) {
-
-    .search {
-        box-shadow: 0px 15px 15px 0px var(--dark10);
-    }
-
-}
+@media screen and (max-width: 1024px) {}
 
 /* tablets */
 @media screen and (max-width: 768px) {
 
     .search {
-        padding: var(--medium);
+        padding: var(--tiny);
     }
 
     #search {
         width: 500px;
-        max-width: 100%;
+        max-width: 95%;
         border: solid var(--dark);
         border-width: 0 0 1px 0;
         background: none;
@@ -194,7 +193,6 @@
         font-size: 1rem;
         text-align: center;
         padding: var(--tiny);
-        margin-bottom: var(--large);
         z-index: 2;
     }
 
@@ -211,28 +209,24 @@
         max-width: 90%;
     }
 
-    .suggestion-message {
-        padding: var(--medium) var(--small);
-    }
-
     .result {
         padding: var(--small);
     }
 
-    .suggestion::after {
-        right: var(--small);
-        left: var(--small);
-        transform: translateY(-20px);
+    .suggestion {
+
     }
 
-    .result::after {
+    .suggestion::before {
         right: var(--small);
         left: var(--small);
         transform: translateY(-15px);
     }
 
-    .result:first-of-type::after {
-        display: none;
+    .result::before {
+        right: var(--small);
+        left: var(--small);
+        transform: translateY(-15px);
     }
 
     .result-image {

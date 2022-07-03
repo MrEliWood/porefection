@@ -21,6 +21,7 @@
 .product-headline {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     width: 100%;
     margin: 0 var(--tiny);
 }
@@ -74,6 +75,7 @@
 
 .remove-product-btn:hover .remove-product-left,
 .remove-product-btn:hover .remove-product-right {
+    border: solid var(--red);
     opacity: 1;
 }
 
@@ -188,6 +190,11 @@
 
     .product-image {
         height: 90px;
+        margin-right: var(--tiny);
+    }
+
+    .product-detail-header:first-of-type {
+        margin-top: var(--small);
     }
 
 }

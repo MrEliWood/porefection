@@ -5,6 +5,7 @@ header {
     text-align: center;
     width: 100vw;
     padding: var(--large);
+    animation: fade-in 1s both;
 }
 
 .site-title {

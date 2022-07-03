@@ -12,3 +12,9 @@
 ::marker {
     font-weight: 500;
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

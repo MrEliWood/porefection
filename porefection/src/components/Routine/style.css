@@ -5,8 +5,15 @@
     width: 100%;
 }
 
+.routine-headline {
+    margin-top: var(--medium);
+}
+
 .no-products-message {
+    text-align: center;
     font-weight: 200;
+    margin: var(--small) var(--medium);
+    animation: fade-in 0.5s both;
 }
 
 .all-products {
@@ -21,12 +28,14 @@
     display: flex;
     align-items: flex-start;
     padding: var(--large);
+    animation: slide-up 0.5s both;
 }
 
 .step::before {
     content: 'Step ';
     font-size: 1rem;
     font-weight: 200;
+    animation: slide-up 0.5s both;
 }
 
 .step {
@@ -38,10 +47,14 @@
     line-height: 0.9;
     height: 200px;
     margin-right: var(--large);
+    animation: slide-up 0.5s both;
 }
 
 .api-credit {
     padding: var(--large);
+    text-align: center;
+    font-size: 0.9rem;
+    animation: fade-in 0.5s both 2s;
 }
 
 /* large screens */
@@ -76,6 +89,10 @@
 
     .product {
         padding: var(--large) var(--medium);
+    }
+
+    .step {
+        margin-bottom: var(--small);
     }
 
 }

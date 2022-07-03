@@ -16,6 +16,14 @@ function Search({ routine, getRoutine }) {
         document.body.style.overflow = "auto";
     }
 
+    const handleFocus = () => {
+
+        (searchResults || searchSuggestions) && setIsOpen(true);
+
+    }
+
+    isOpen && window.scrollTo(0, 150);
+
     const handleInputChange = (e) => {
 
         setUserSearch(e.target.value);
@@ -210,8 +218,9 @@ function Search({ routine, getRoutine }) {
 
             {isOpen && <div className="modal-background" onClick={() => setIsOpen(false)}></div>}
 
-            <input type="search" name="search" id="search" value={userSearch} placeholder="Search for a product or ingredient" autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} onFocus={() => (searchResults || searchSuggestions) && setIsOpen(true)} />
-            {/* <input type="submit" name="submit" id="submit" htmlFor="search" onClick={() => getProducts(userSearch)} /> */}
+
+            <input formaction type="text" name="search" id="search" value={userSearch} placeholder="Search for a product or ingredient" autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} onFocus={handleFocus} />
+
 
             {isOpen && <ul className="all-results">
 
@@ -219,16 +228,20 @@ function Search({ routine, getRoutine }) {
 
                 {searchSuggestions && <div className="search-suggestions">
 
-                    <div className="suggestion-message">
-                        <h3>Sorry, we couldn't find anything from your search.</h3>
-                        <h3>Try one of these searches instead:</h3>
-                    </div>
+                    {window.innerWidth > 768 ?
+                        <div className="suggestion-message">
+                            <h3>Sorry, we couldn't find anything from your search.</h3>
+                            <h3>Try one of these searches instead:</h3>
+                        </div> :
+                        <div className="suggestion-message">
+                            <h3>Sorry, we couldn't find anything from your search. Try one of these searches instead:</h3>
+                        </div>}
 
                     {searchSuggestions?.typeAheadTerms?.map((term, index) => {
 
                         return (
 
-                            index > 2 ?
+                            index > 2 && term.productName ?
 
                                 <li className="suggestion" key={index} onClick={() => { setUserSearch(term.productName); getProducts(term.productName); }}>
 
@@ -236,13 +249,15 @@ function Search({ routine, getRoutine }) {
 
                                 </li>
 
-                                : index > -1 &&
+                                : index > -1 && term.term ?
 
-                                <li className="suggestion" key={index} onClick={() => { setUserSearch(term.term); getProducts(term.term); }}>
+                                    <li className="suggestion" key={index} onClick={() => { setUserSearch(term.term); getProducts(term.term); }}>
 
-                                    <p>{term.term}</p>
+                                        <p>{term.term}</p>
 
-                                </li>
+                                    </li>
+
+                                    : ''
 
                         )
 
