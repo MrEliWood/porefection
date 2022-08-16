@@ -18,3 +18,11 @@ form {
     justify-content: flex-start;
     width: 100%;
 }
+
+svg {
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke: currentColor;
+    stroke-width: 4;
+    fill: none;
+}

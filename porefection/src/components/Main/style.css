@@ -4,4 +4,24 @@ main {
     align-items: center;
     width: 100vw;
     animation: fade-in 1s both 0.5s;
+    gap: var(--large);
+    padding: 0px var(--medium);
+}
+
+/* large screens */
+@media screen and (max-width: 1200px) {}
+
+/* small screens */
+@media screen and (max-width: 1024px) {}
+
+/* tablets */
+@media screen and (max-width: 768px) {}
+
+/* phones */
+@media screen and (max-width: 480px) {
+
+    main {
+        padding: 0px var(--small);
+    }
+
 }

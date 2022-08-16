@@ -218,7 +218,10 @@ function Search({ routine, getRoutine }) {
 
             {isOpen && <div className="modal-background" onClick={() => setIsOpen(false)}></div>}
 
-            {isOpen && <h2 className="close-modal-btn" onClick={() => setIsOpen(false)}>X</h2>}
+            {isOpen && <svg className="close-modal-btn" viewBox="0 0 24 24" width="18" height="18" onClick={() => setIsOpen(false)}>
+                <line x1="2" y1="2" x2="22" y2="22" />
+                <line x1="2" y1="22" x2="22" y2="2" />
+            </svg>}
 
             <div className="search-input">
 

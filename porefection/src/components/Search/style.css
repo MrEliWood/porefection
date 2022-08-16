@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: var(--large) var(--large) var(--medium) var(--large);
 }
 
 .search-input {
@@ -57,15 +56,13 @@
     position: fixed;
     top: var(--medium);
     right: var(--medium);
-    color: var(--dark50);
-    line-height: 1;
-    animation: fade-in 0.5s both 0.5s;
+    opacity: 0.5;
     z-index: 2;
 }
 
 .close-modal-btn:hover {
     cursor: pointer;
-    color: var(--dark);
+    opacity: 1;
 }
 
 #search {
