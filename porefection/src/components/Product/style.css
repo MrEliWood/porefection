@@ -16,6 +16,7 @@
 .product-banner {
     display: flex;
     justify-content: space-between;
+    margin-bottom: var(--small);
 }
 
 .product-headline {
@@ -38,10 +39,6 @@
     margin-left: var(--tiny);
 }
 
-.product-detail-header:first-of-type {
-    margin-top: var(--medium);
-}
-
 .product-detail-header {
     display: flex;
     justify-content: space-between;
@@ -57,6 +54,7 @@
 
 .remove-product-btn {
     opacity: 0.5;
+    margin: var(--tiny);
 }
 
 .remove-product-btn:hover {
@@ -66,9 +64,14 @@
 }
 
 /* day/night icons */
+.day-night-icons {
+    opacity: 0.5;
+    width: fit-content;
+    padding: var(--tiny) 0;
+}
+
 .day-night-icons * {
     stroke-width: 1;
-    border: 1px solid black;
 }
 
 .accordian-carrot {

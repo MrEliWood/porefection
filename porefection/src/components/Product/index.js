@@ -48,10 +48,10 @@ function Product({ product, removeProduct }) {
 
                 </div>
 
-                <div className="day-night-icons">
+                {/* <div className="day-night-icons">
 
-                    <svg className="day-icon" viewBox="0 0 24 24" width="96" height="96" onClick={() => removeProduct(product)}>
-                        <circle cx="12" cy="12" r="6" />
+                    <svg className="day-icon" viewBox="0 0 24 24" width="30" height="30" onClick={() => removeProduct(product)}>
+                        <circle cx="12" cy="12" r="6" fill="none" />
                         <line x1="12" y1="2" x2="12" y2="4" />
                         <line x1="5" y1="5" x2="6" y2="6" />
                         <line x1="2" y1="12" x2="4" y2="12" />
@@ -62,18 +62,15 @@ function Product({ product, removeProduct }) {
                         <line x1="18" y1="6" x2="19" y2="5" />
                     </svg>
 
-                    <svg className="night-icon" viewBox="0 0 24 24" width="96" height="96" onClick={() => removeProduct(product)}>
-                        <path d="
-                            M 6 4
-                            A 2 2 0 0 0 18 20
-                            M 6 4
-                            A 1 1 0 0 0 18 20" />
-                        {/* <polygon points="16 5, 17 7, 15 6, 17 6, 15 7" />
-                        <polygon points="18 10, 19 12, 17 11, 19 11, 17 12" />
-                        <polygon points="15 15, 16 17, 14 16, 16 16, 14 17" /> */}
+                    <svg className="night-icon" viewBox="0 0 24 24" width="30" height="30" onClick={() => removeProduct(product)}>
+                        <circle cx="12" cy="12" r="8" fill="currentColor" />
+                        <circle cx="16" cy="8" r="7" stroke="none" fill="white" />
+                        <polygon points="13 5, 14 7, 12 6, 14 6, 12 7" stroke-width="1" />
+                        <polygon points="18 6, 19 8, 17 7, 19 7, 17 8" />
+                        <polygon points="16 10, 17 12, 15 11, 17 11, 15 12" />
                     </svg>
 
-                </div>
+                </div> */}
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>
                     Description
