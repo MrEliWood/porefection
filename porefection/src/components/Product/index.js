@@ -1,10 +1,12 @@
 import './style.css';
 
-function Product({ product, removeProduct }) {
+function Product({ index, routine, getRoutine, product }) {
 
     const handleAccordian = (e) => {
 
         let carrot = e.target.lastChild;
+
+        console.log('CARROT', e.target)
 
         carrot.style.transform === 'scaleY(-1)'
             ? carrot.style.transform = 'scaleY(1)'
@@ -18,9 +20,29 @@ function Product({ product, removeProduct }) {
 
     };
 
+        // remove product
+        const removeProduct = () => {
+
+            let removeConfirmed = window.confirm('Are you sure you want to remove this product from your routine?');
+    
+            if (removeConfirmed) {
+    
+                document.getElementById(index).classList.add("remove-product-animation");
+    
+                setTimeout(() => {
+                    const updatedRoutine = JSON.stringify(routine);
+                    const productString = JSON.stringify(product);
+                    localStorage.setItem('Porefection Skincare Routine', updatedRoutine.replace(productString, ''));
+                    getRoutine();
+                }, 2000);
+    
+            };
+    
+        };
+
     return (
 
-        <div className="product-card">
+        <div className={"product-card"}>
 
             {window.innerWidth > 768 && <img className="product-image" src={product.currentSku?.skuImages?.image1500} alt={product.imageAltText}></img>}
 
@@ -41,7 +63,7 @@ function Product({ product, removeProduct }) {
 
                     </div>
 
-                    <svg className="remove-product-btn" viewBox="0 0 24 24" width="12" height="12" onClick={() => removeProduct(product)}>
+                    <svg className="remove-product-btn" viewBox="0 0 24 24" width="12" height="12" onClick={removeProduct}>
                         <line x1="2" y1="2" x2="22" y2="22" />
                         <line x1="2" y1="22" x2="22" y2="2" />
                     </svg>
@@ -74,7 +96,7 @@ function Product({ product, removeProduct }) {
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>
                     Description
-                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12" onClick={() => removeProduct(product)}>
+                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12">
                         <polyline points="2 7, 12 17, 22 7" />
                     </svg>
                 </h3>
@@ -93,7 +115,7 @@ function Product({ product, removeProduct }) {
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>
                     Suggested Use
-                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12" onClick={() => removeProduct(product)}>
+                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12">
                         <polyline points="2 7, 12 17, 22 7" />
                     </svg>
                 </h3>
@@ -108,7 +130,7 @@ function Product({ product, removeProduct }) {
 
                 <h3 className="product-detail-header" onClick={handleAccordian}>
                     Ingredient Breakdown
-                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12" onClick={() => removeProduct(product)}>
+                    <svg className="accordian-carrot" viewBox="0 0 24 24" width="12" height="12">
                         <polyline points="2 7, 12 17, 22 7" />
                     </svg>
                 </h3>

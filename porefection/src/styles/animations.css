@@ -68,7 +68,46 @@
 
 }
 
-/* loading animation */
+/* product animations */
+@keyframes add-product {
+
+    from {
+        max-height: 0vh;
+        opacity: 0;
+    }
+
+    50% {
+        max-height: 70vh;
+        opacity: 0;
+    }
+
+    to {
+        max-height: 70vh;
+        opacity: 1;
+    }
+
+}
+
+@keyframes remove-product {
+
+    from {
+        max-height: 70vh;
+        opacity: 1;
+    }
+
+    50% {
+        max-height: 70vh;
+        opacity: 0;
+    }
+
+    to {
+        max-height: 0vh;
+        opacity: 0;
+    }
+
+}
+
+/* loading dots animation */
 .lds-ellipsis {
     display: inline-block;
     position: relative;

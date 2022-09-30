@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    
 }
 
 .routine-headline {
@@ -30,6 +29,11 @@
     display: flex;
     align-items: flex-start;
     gap: var(--medium);
+    animation: add-product 2s both;
+}
+
+.remove-product-animation {
+    animation: remove-product 2s both;
 }
 
 .step::before {
@@ -87,12 +91,16 @@
 /* phones */
 @media screen and (max-width: 480px) {
 
+    .product {
+        gap: var(--tiny);
+    }
+
     .step {
         font-size: 1.8rem;
     }
 
     .api-credit {
-        padding: var(--medium);
+        padding: var(--large) var(--small);
     }
 
 }

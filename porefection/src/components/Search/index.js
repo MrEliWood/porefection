@@ -70,8 +70,6 @@ function Search({ routine, getRoutine }) {
     // add product
     const addProduct = async (product) => {
 
-        console.log(product);
-
         setIsOpen(false);
 
         await fetch(`https://sephora.p.rapidapi.com/products/detail?productId=${product.id}&preferedSku=${product.sku}`, options)
