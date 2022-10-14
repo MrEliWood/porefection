@@ -54,8 +54,6 @@ function Search({ routine, getRoutine }) {
     // search products
     const getProducts = async (search) => {
 
-        console.log(process.env.REACT_APP_API_KEY)
-
         setIsOpen(true);
         setSearchSuggestions();
         setSearchResults();
