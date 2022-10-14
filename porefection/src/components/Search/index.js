@@ -76,134 +76,137 @@ function Search({ routine, getRoutine }) {
 
                 const updatedRoutine = routine;
 
-                // high tech tools
-                if (response.parentCategory.displayName === 'High Tech Tools') {
-                    updatedRoutine.highTechTools.misc.push(response);
-                } else
-                    if (response.parentCategory.displayName === 'Hair Removal') {
+                switch (response.parentCategory.displayName) {
+
+                    // high tech tools
+                    case 'High Tech Tools':
+                        updatedRoutine.highTechTools.misc.push(response);
+                        break;
+                    case 'Hair Removal':
                         updatedRoutine.highTechTools.hairRemoval.push(response);
-                    } else
-                        if (response.parentCategory.displayName === 'Facial Cleansing Brushes') {
-                            updatedRoutine.highTechTools.facialCleansingBrushes.push(response);
+                        break;
+                    case 'Facial Cleansing Brushes':
+                        updatedRoutine.highTechTools.facialCleansingBrushes.push(response);
+                        break;
+                    case 'Anti-Aging':
+                        updatedRoutine.highTechTools.antiAging.push(response);
+                        break;
+                    case 'Teeth Whitening':
+                        updatedRoutine.highTechTools.teethWhitening.push(response);
+                        break;
+
+                    // cleansers
+                    case 'Cleansers':
+                        updatedRoutine.cleansers.misc.push(response);
+                        break;
+                    case 'Face Wipes':
+                        updatedRoutine.cleansers.faceWipes.push(response);
+                        break;
+                    case 'Makeup Removers':
+                        updatedRoutine.cleansers.makeupRemovers.push(response);
+                        break;
+                    case 'Face Wash & Cleansers':
+                        updatedRoutine.cleansers.faceWashAndCleansers.push(response);
+                        break;
+                    case 'Exfoliators':
+                        updatedRoutine.cleansers.exfoliators.push(response);
+                        break;
+                    case 'Toners':
+                        updatedRoutine.cleansers.toners.push(response);
+                        break;
+                    case 'Blotting Papers':
+                        updatedRoutine.cleansers.blottingPapers.push(response);
+                        break;
+
+                        // treatments
+                        if (response.parentCategory.displayName === 'Treatments') {
+                            updatedRoutine.treatments.misc.push(response);
                         } else
-                            if (response.parentCategory.displayName === 'Anti-Aging') {
-                                updatedRoutine.highTechTools.antiAging.push(response);
+                            if (response.parentCategory.displayName === 'Face Serums') {
+                                updatedRoutine.treatments.faceSerums.push(response);
                             } else
-                                if (response.parentCategory.displayName === 'Teeth Whitening') {
-                                    updatedRoutine.highTechTools.teethWhitening.push(response);
+                                if (response.parentCategory.displayName === 'Blemish & Acne Treatments') {
+                                    updatedRoutine.treatments.blemishAndAcneTreatments.push(response);
                                 } else
-
-                                    // cleansers
-                                    if (response.parentCategory.displayName === 'Cleansers') {
-                                        updatedRoutine.cleansers.misc.push(response);
+                                    if (response.parentCategory.displayName === 'Facial Peels') {
+                                        updatedRoutine.treatments.facialPeels.push(response);
                                     } else
-                                        if (response.parentCategory.displayName === 'Face Wipes') {
-                                            updatedRoutine.cleansers.faceWipes.push(response);
+
+                                        // masks
+                                        if (response.parentCategory.displayName === 'Masks') {
+                                            updatedRoutine.masks.misc.push(response);
                                         } else
-                                            if (response.parentCategory.displayName === 'Makeup Removers') {
-                                                updatedRoutine.cleansers.makeupRemovers.push(response);
+                                            if (response.parentCategory.displayName === 'Face Masks') {
+                                                updatedRoutine.masks.faceMasks.push(response);
                                             } else
-                                                if (response.parentCategory.displayName === 'Face Wash & Cleansers') {
-                                                    updatedRoutine.cleansers.faceWashAndCleansers.push(response);
+                                                if (response.parentCategory.displayName === 'Sheet Masks') {
+                                                    updatedRoutine.masks.sheetMasks.push(response);
                                                 } else
-                                                    if (response.parentCategory.displayName === 'Exfoliators') {
-                                                        updatedRoutine.cleansers.exfoliators.push(response);
+
+                                                    // eye care
+                                                    if (response.parentCategory.displayName === 'Eye Care') {
+                                                        updatedRoutine.eyeCare.misc.push(response);
                                                     } else
-                                                        if (response.parentCategory.displayName === 'Toners') {
-                                                            updatedRoutine.cleansers.toners.push(response);
+                                                        if (response.parentCategory.displayName === 'Eye Creams & Treatments') {
+                                                            updatedRoutine.eyeCare.eyeCreamsAndTreatments.push(response);
                                                         } else
-                                                            if (response.parentCategory.displayName === 'Blotting Papers') {
-                                                                updatedRoutine.cleansers.blottingPapers.push(response);
+                                                            if (response.parentCategory.displayName === 'Eye Masks') {
+                                                                updatedRoutine.eyeCare.eyeMasks.push(response);
                                                             } else
-                                                                // treatments
-                                                                if (response.parentCategory.displayName === 'Treatments') {
-                                                                    updatedRoutine.treatments.misc.push(response);
+
+                                                                // moisturizers
+                                                                if (response.parentCategory.displayName === 'Moisturizers') {
+                                                                    updatedRoutine.moisturizers.misc.push(response);
                                                                 } else
-                                                                    if (response.parentCategory.displayName === 'Face Serums') {
-                                                                        updatedRoutine.treatments.faceSerums.push(response);
+                                                                    if (response.parentCategory.displayName === 'Decollete & Neck Creams') {
+                                                                        updatedRoutine.moisturizers.decolleteAndNeckCreams.push(response);
                                                                     } else
-                                                                        if (response.parentCategory.displayName === 'Blemish & Acne Treatments') {
-                                                                            updatedRoutine.treatments.blemishAndAcneTreatments.push(response);
+                                                                        if (response.parentCategory.displayName === 'Night Creams') {
+                                                                            updatedRoutine.moisturizers.nightCreams.push(response);
                                                                         } else
-                                                                            if (response.parentCategory.displayName === 'Facial Peels') {
-                                                                                updatedRoutine.treatments.facialPeels.push(response);
+                                                                            if (response.parentCategory.displayName === 'Face Oils') {
+                                                                                updatedRoutine.moisturizers.faceOils.push(response);
                                                                             } else
-
-                                                                                // masks
-                                                                                if (response.parentCategory.displayName === 'Masks') {
-                                                                                    updatedRoutine.masks.misc.push(response);
+                                                                                if (response.parentCategory.displayName === 'Mists & Essences') {
+                                                                                    updatedRoutine.moisturizers.mistsAndEssences.push(response);
                                                                                 } else
-                                                                                    if (response.parentCategory.displayName === 'Face Masks') {
-                                                                                        updatedRoutine.masks.faceMasks.push(response);
+                                                                                    if (response.parentCategory.displayName === 'BB & CC Creams') {
+                                                                                        updatedRoutine.moisturizers.BBandCCcreams.push(response);
                                                                                     } else
-                                                                                        if (response.parentCategory.displayName === 'Sheet Masks') {
-                                                                                            updatedRoutine.masks.sheetMasks.push(response);
+
+                                                                                        // sunscreen
+                                                                                        if (response.parentCategory.displayName === 'Sunscreen') {
+                                                                                            updatedRoutine.sunscreen.misc.push(response);
                                                                                         } else
-
-                                                                                            // eye care
-                                                                                            if (response.parentCategory.displayName === 'Eye Care') {
-                                                                                                updatedRoutine.eyeCare.misc.push(response);
+                                                                                            if (response.parentCategory.displayName === 'Face Sunscreen') {
+                                                                                                updatedRoutine.sunscreen.faceSunscreen.push(response);
                                                                                             } else
-                                                                                                if (response.parentCategory.displayName === 'Eye Creams & Treatments') {
-                                                                                                    updatedRoutine.eyeCare.eyeCreamsAndTreatments.push(response);
+                                                                                                if (response.parentCategory.displayName === 'Body Sunscreen') {
+                                                                                                    updatedRoutine.sunscreen.bodySunscreen.push(response);
                                                                                                 } else
-                                                                                                    if (response.parentCategory.displayName === 'Eye Masks') {
-                                                                                                        updatedRoutine.eyeCare.eyeMasks.push(response);
+
+                                                                                                    // self tanners
+                                                                                                    if (response.parentCategory.displayName === 'Self Tanners') {
+                                                                                                        updatedRoutine.selfTanners.misc.push(response);
                                                                                                     } else
-
-                                                                                                        // moisturizers
-                                                                                                        if (response.parentCategory.displayName === 'Moisturizers') {
-                                                                                                            updatedRoutine.moisturizers.misc.push(response);
+                                                                                                        if (response.parentCategory.displayName === 'For Face') {
+                                                                                                            updatedRoutine.selfTanners.forFace.push(response);
                                                                                                         } else
-                                                                                                            if (response.parentCategory.displayName === 'Decollete & Neck Creams') {
-                                                                                                                updatedRoutine.moisturizers.decolleteAndNeckCreams.push(response);
+                                                                                                            if (response.parentCategory.displayName === 'For Body') {
+                                                                                                                updatedRoutine.selfTanners.forBody.push(response);
                                                                                                             } else
-                                                                                                                if (response.parentCategory.displayName === 'Night Creams') {
-                                                                                                                    updatedRoutine.moisturizers.nightCreams.push(response);
-                                                                                                                } else
-                                                                                                                    if (response.parentCategory.displayName === 'Face Oils') {
-                                                                                                                        updatedRoutine.moisturizers.faceOils.push(response);
-                                                                                                                    } else
-                                                                                                                        if (response.parentCategory.displayName === 'Mists & Essences') {
-                                                                                                                            updatedRoutine.moisturizers.mistsAndEssences.push(response);
-                                                                                                                        } else
-                                                                                                                            if (response.parentCategory.displayName === 'BB & CC Creams') {
-                                                                                                                                updatedRoutine.moisturizers.BBandCCcreams.push(response);
-                                                                                                                            } else
+                                                                                                                // lip balms & treamtments
+                                                                                                                if (response.parentCategory.displayName === 'Lip Balms & Treatments') {
+                                                                                                                    updatedRoutine.lipBalmsAndTreatments.misc.push(response);
+                                                                                                                } else {
+                                                                                                                    updatedRoutine.makeup.misc.push(response);
+                                                                                                                }
 
-                                                                                                                                // sunscreen
-                                                                                                                                if (response.parentCategory.displayName === 'Sunscreen') {
-                                                                                                                                    updatedRoutine.sunscreen.misc.push(response);
-                                                                                                                                } else
-                                                                                                                                    if (response.parentCategory.displayName === 'Face Sunscreen') {
-                                                                                                                                        updatedRoutine.sunscreen.faceSunscreen.push(response);
-                                                                                                                                    } else
-                                                                                                                                        if (response.parentCategory.displayName === 'Body Sunscreen') {
-                                                                                                                                            updatedRoutine.sunscreen.bodySunscreen.push(response);
-                                                                                                                                        } else
+                        localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
 
-                                                                                                                                            // self tanners
-                                                                                                                                            if (response.parentCategory.displayName === 'Self Tanners') {
-                                                                                                                                                updatedRoutine.selfTanners.misc.push(response);
-                                                                                                                                            } else
-                                                                                                                                                if (response.parentCategory.displayName === 'For Face') {
-                                                                                                                                                    updatedRoutine.selfTanners.forFace.push(response);
-                                                                                                                                                } else
-                                                                                                                                                    if (response.parentCategory.displayName === 'For Body') {
-                                                                                                                                                        updatedRoutine.selfTanners.forBody.push(response);
-                                                                                                                                                    } else
-                                                                                                                                                        // lip balms & treamtments
-                                                                                                                                                        if (response.parentCategory.displayName === 'Lip Balms & Treatments') {
-                                                                                                                                                            updatedRoutine.lipBalmsAndTreatments.misc.push(response);
-                                                                                                                                                        } else {
-                                                                                                                                                            updatedRoutine.makeup.misc.push(response);
-                                                                                                                                                        }
+                        getRoutine();
 
-                localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
-
-                getRoutine();
-
-            })
+                })
             .catch(err => console.error(err));
 
     };
