@@ -303,32 +303,6 @@ function Search({ routine, getRoutine }) {
 
             </ul>}
 
-            {/* <ul>
-
-                {steps.map((step, index) => {
-
-                    return (
-
-                        <li key={index}>
-
-                            <h2>{step.name}</h2>
-
-                            <div className="examples">
-                                {step.examples?.map((example, index) => {
-                                    return (<p key={index}>{example}</p>)
-                                })}
-                            </div>
-
-                            <p>{step.time}</p>
-
-                        </li>
-
-                    )
-
-                })}
-
-            </ul> */}
-
         </section>
 
     );
