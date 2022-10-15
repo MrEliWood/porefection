@@ -119,18 +119,18 @@ function Search({ routine, getRoutine }) {
                         break;
 
                         // treatments
-                        if (response.parentCategory.displayName === 'Treatments') {
-                            updatedRoutine.treatments.misc.push(response);
-                        } else
-                            if (response.parentCategory.displayName === 'Face Serums') {
-                                updatedRoutine.treatments.faceSerums.push(response);
-                            } else
-                                if (response.parentCategory.displayName === 'Blemish & Acne Treatments') {
-                                    updatedRoutine.treatments.blemishAndAcneTreatments.push(response);
-                                } else
-                                    if (response.parentCategory.displayName === 'Facial Peels') {
-                                        updatedRoutine.treatments.facialPeels.push(response);
-                                    } else
+                    case 'Treatments':
+                        updatedRoutine.treatments.misc.push(response);
+                        break;
+                    case 'Face Serums':
+                        updatedRoutine.treatments.faceSerums.push(response);
+                        break;
+                    case 'Blemish & Acne Treatments':
+                        updatedRoutine.treatments.blemishAndAcneTreatments.push(response);
+                        break;
+                    case 'Facial Peels':
+                        updatedRoutine.treatments.facialPeels.push(response);
+                        break;
 
                                         // masks
                                         if (response.parentCategory.displayName === 'Masks') {
