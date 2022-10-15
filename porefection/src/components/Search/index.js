@@ -174,40 +174,45 @@ function Search({ routine, getRoutine }) {
                         updatedRoutine.moisturizers.BBandCCcreams.push(response);
                         break;
 
-                        // sunscreen
-                        if (response.parentCategory.displayName === 'Sunscreen') {
-                            updatedRoutine.sunscreen.misc.push(response);
-                        } else
-                            if (response.parentCategory.displayName === 'Face Sunscreen') {
-                                updatedRoutine.sunscreen.faceSunscreen.push(response);
-                            } else
-                                if (response.parentCategory.displayName === 'Body Sunscreen') {
-                                    updatedRoutine.sunscreen.bodySunscreen.push(response);
-                                } else
+                    // sunscreen
+                    case 'Sunscreen':
+                        updatedRoutine.sunscreen.misc.push(response);
+                        break;
+                    case 'Face Sunscreen':
+                        updatedRoutine.sunscreen.faceSunscreen.push(response);
+                        break;
+                    case 'Body Sunscreen':
+                        updatedRoutine.sunscreen.bodySunscreen.push(response);
+                        break;
 
-                                    // self tanners
-                                    if (response.parentCategory.displayName === 'Self Tanners') {
-                                        updatedRoutine.selfTanners.misc.push(response);
-                                    } else
-                                        if (response.parentCategory.displayName === 'For Face') {
-                                            updatedRoutine.selfTanners.forFace.push(response);
-                                        } else
-                                            if (response.parentCategory.displayName === 'For Body') {
-                                                updatedRoutine.selfTanners.forBody.push(response);
-                                            } else
-                                                // lip balms & treamtments
-                                                if (response.parentCategory.displayName === 'Lip Balms & Treatments') {
-                                                    updatedRoutine.lipBalmsAndTreatments.misc.push(response);
-                                                } else {
-                                                    updatedRoutine.makeup.misc.push(response);
-                                                }
+                    // self tanners
+                    case 'Self Tanners':
+                        updatedRoutine.selfTanners.misc.push(response);
+                        break;
+                    case 'For Face':
+                        updatedRoutine.selfTanners.forFace.push(response);
+                        break;
+                    case 'For Body':
+                        updatedRoutine.selfTanners.forBody.push(response);
+                        break;
 
-                        localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
+                    // lip balms & treamtments
+                    case 'Lip Balms & Treatments':
+                        updatedRoutine.lipBalmsAndTreatments.misc.push(response);
+                        break;
 
-                        getRoutine();
+                    // misc
+                    default:
+                        updatedRoutine.makeup.misc.push(response);
 
-                })
-            .catch(err => console.error(err));
+                };
+
+                localStorage.setItem('Porefection Skincare Routine', JSON.stringify(updatedRoutine));
+
+                getRoutine();
+
+            })
+            .catch(err => alert(err));
 
     };
 
