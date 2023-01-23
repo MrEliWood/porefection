@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/porefection/static/css/main.9a6e6439.css",
-    "main.js": "/porefection/static/js/main.b9c07796.js",
+    "main.js": "/porefection/static/js/main.afe47318.js",
     "index.html": "/porefection/index.html",
     "main.9a6e6439.css.map": "/porefection/static/css/main.9a6e6439.css.map",
-    "main.b9c07796.js.map": "/porefection/static/js/main.b9c07796.js.map"
+    "main.afe47318.js.map": "/porefection/static/js/main.afe47318.js.map"
   },
   "entrypoints": [
     "static/css/main.9a6e6439.css",
-    "static/js/main.b9c07796.js"
+    "static/js/main.afe47318.js"
   ]
 }
