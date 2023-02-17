@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Form from '../Form';
 import './style.css';
 
 function Search({ routine, getRoutine }) {
 	const [userSearch, setUserSearch] = useState('');
 	const [searchResults, setSearchResults] = useState();
 	const [searchSuggestions, setSearchSuggestions] = useState();
+	const [showProductForm, setShowProductForm] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
 	if (isOpen) {
@@ -213,7 +215,7 @@ function Search({ routine, getRoutine }) {
 			)}
 
 			<div className='search-input'>
-				<div className='search-caption'>Search for a product</div>
+				<div className='input-caption'>Search for a product</div>
 
 				<form className='search-container'>
 					<input type='search' name='search' id='search' value={userSearch} placeholder='Niacinamide 10% + Zinc 1% Oil Control Serum' autoFocus onChange={handleInputChange} onKeyUp={(e) => e.key === 'Enter' && getProducts(userSearch)} onFocus={handleFocus} />
@@ -230,7 +232,7 @@ function Search({ routine, getRoutine }) {
 
 			{isOpen && (
 				<ul className='all-results'>
-					{!searchSuggestions && !searchResults && (
+					{!searchSuggestions && !searchResults && !showProductForm && (
 						<div className='lds-ellipsis'>
 							<div></div>
 							<div></div>
@@ -243,12 +245,12 @@ function Search({ routine, getRoutine }) {
 						<div className='search-suggestions'>
 							{window.innerWidth > 768 ? (
 								<div className='suggestion-message'>
-									<h3>Sorry, we couldn't find anything from your search.</h3>
-									<h3>Try one of these searches instead:</h3>
+									<p>Sorry, we couldn't find anything from your search.</p>
+									<p>Try one of these searches instead:</p>
 								</div>
 							) : (
 								<div className='suggestion-message'>
-									<h3>Sorry, we couldn't find anything from your search. Try one of these searches instead:</h3>
+									<p>Sorry, we couldn't find anything from your search. Try one of these searches instead:</p>
 								</div>
 							)}
 
@@ -261,7 +263,7 @@ function Search({ routine, getRoutine }) {
 											setUserSearch(term.productName);
 											getProducts(term.productName);
 										}}>
-										<p>{term.productName}</p>
+										<h3>{term.productName}</h3>
 									</li>
 								) : index > -1 && term.term ? (
 									<li
@@ -271,12 +273,24 @@ function Search({ routine, getRoutine }) {
 											setUserSearch(term.term);
 											getProducts(term.term);
 										}}>
-										<p>{term.term}</p>
+										<h3>{term.term}</h3>
 									</li>
 								) : (
 									''
 								);
 							})}
+
+							<div className='enter-product-info'>
+								<p>OR</p>
+
+								<button
+									onClick={() => {
+										setSearchSuggestions();
+										setShowProductForm(true);
+									}}>
+									Enter Product Info
+								</button>
+							</div>
 						</div>
 					)}
 
@@ -292,6 +306,8 @@ function Search({ routine, getRoutine }) {
 							</li>
 						);
 					})}
+
+					{showProductForm && <Form />}
 				</ul>
 			)}
 		</section>
