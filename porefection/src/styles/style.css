@@ -29,9 +29,9 @@ svg {
 
 input,
 select {
-	border: solid var(--dark);
-	border-width: 0 0 1px 0;
-	border-radius: 0px;
+	border-image: var(--gradient) 1;
+	border-width: 0 0 2px 0;
+	border-radius: var(--tiny);
 	background: none;
 	outline: none;
 	font-size: 1.2rem;
@@ -55,7 +55,7 @@ button {
 	align-items: center;
 	border: none;
 	border-radius: var(--tiny);
-	background: var(--accent);
+	background: linear-gradient(135deg, hsl(275, 100%, 75%), hsl(300, 100%, 75%));
 	color: var(--light);
 	padding: var(--small) var(--medium);
 	min-height: var(--medium);
@@ -64,5 +64,5 @@ button {
 
 button:hover {
 	cursor: pointer;
-	opacity: 0.9;
+	opacity: 0.8;
 }

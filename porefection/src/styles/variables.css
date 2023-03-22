@@ -28,6 +28,9 @@
 	--red: rgb(220, 0, 0);
 	--green: rgb(0, 180, 0);
 
+	--gradient: linear-gradient(135deg, hsl(200, 100%, 65%) 10%, hsl(250, 100%, 75%), hsl(300, 100%, 75%));
+	--gradient10: linear-gradient(135deg, hsla(200, 100%, 65%, 0.1) 10%, hsla(250, 100%, 75%, 0.1), hsla(300, 100%, 75%, 0.1));
+
 	/* box shadow */
 	--shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
 

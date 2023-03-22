@@ -32,7 +32,7 @@
 	display: block;
 	position: fixed;
 	top: 0;
-	background: var(--dark10);
+	background: var(--gradient10);
 	backdrop-filter: blur(15px);
 	width: 100vw;
 	height: 100vh;
@@ -60,7 +60,7 @@
 	align-items: center;
 	position: absolute;
 	overflow: scroll;
-	max-height: 70vh;
+	height: 65vh;
 	border-radius: var(--small);
 	box-shadow: var(--shadow);
 	background: var(--light);
